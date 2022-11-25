@@ -1,0 +1,98 @@
+
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-primary" data-toggle="modal" (click)="primaryModal1.show()"  >
+  rendez-vous
+</button>
+
+
+
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-lg">Show BI Report</button>
+
+<div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <iframe title="bitest" width="1140" height="541.25" src="https://app.powerbi.com/reportEmbed?reportId=d3f17e9a-3ce6-4b18-aa04-37e606cdf3e7&autoAuth=true&ctid=513486ec-6643-4f17-a508-76478311be42" frameborder="0" allowFullScreen="true"></iframe>
+    </div>
+  </div>
+</div>
+
+<div bsModal #primaryModal="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-primary" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">Detaills</h4>
+        <button type="button" class="close" (click)="primaryModal.hide()" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body" style="text-align: center">
+        <div>
+        <select class="form-select" aria-label="Default select example" (change)="open()" [(ngModel)]="date" style="display:inline;">
+          <option selected>choisir une date</option>
+          <option *ngFor="let rdate of RDVS" value="{{rdate.date}}">{{rdate.date}}</option>
+
+        </select>
+
+
+          <select class="form-select" aria-label="Default select example" (change)="open()" [(ngModel)]="hour" style="display:inline;margin-left: 50px">
+            <option selected>choisir une heure</option>
+            <option *ngFor="let heure of heures" value="{{heure}}">{{heure}}</option>
+
+          </select>
+
+        </div>
+
+
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-success" (click)="primaryModal.hide();AddRDV();primaryModal2.show()" style="display: inline">Confirm</button>
+        <button type="button" class="btn btn-secondary" (click)="primaryModal.hide()" style="display: inline">Close</button>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+
+<div bsModal #primaryModal1="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-primary" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">Detaills</h4>
+        <button type="button" class="close" (click)="primaryModal1.hide()" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body" style="text-align: center">
+        <p>Utuliser Votre Addrress actuelle ?</p>
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-success"  (click)="primaryModal1.hide();getConseillerFreeTime();primaryModal.show()" style="display: inline">oui</button>
+        <button type="button" class="btn btn-danger"  (click)="primaryModal1.hide();getConseillerFreeTimeW();primaryModal.show()" style="display: inline">non</button>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+
+<div bsModal #primaryModal2="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-primary" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">Detaills</h4>
+        <button type="button" class="close" (click)="primaryModal2.hide()" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body" style="text-align: center">
+        <p>Vous avez un rendez-vous avc Mr {{Conseiller.nom }} {{Conseiller.prenom}} le {{date}} à {{hour}}</p>
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-success"  (click)="primaryModal2.hide()" >OK</button>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+

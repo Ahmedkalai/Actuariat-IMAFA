@@ -1,0 +1,94 @@
+<div style="display: flex">
+  <div class="card">
+    <div class="card-header">
+      <strong>InsureME</strong>
+    </div>
+    <div class="card-body">
+      <form #heroForm="ngForm" action="" method="post" enctype="multipart/form-data" class="form-horizontal">
+
+        <div class="form-group row">
+          <label class="col-md-3 col-form-label" for="select1">Type Contrat</label>
+          <div class="col-md-9">
+            <select id="select1" name="select1" class="form-control" [(ngModel)]="contrat.type"  name="type" style="margin-left: 15px">
+              <option  value="0">Pure Endowment</option>
+              <option value="1">Term Insurance</option>
+              <option value="2">Whole Life</option>
+              <option value="3">Combined Endwoment</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-group row">
+          <label class="col-md-3 col-form-label" for="text-input1">Montant</label>
+          <div class="col-md-9">
+            <input type="text"   name="text-input" class="form-control" [(ngModel)]="contrat.amount" placeholder="Amount ">
+            <span style="color: red" class="help-block1">{{testamount}}</span>
+          </div>
+        </div>
+        <div class="form-group row">
+          <label class="col-md-3 col-form-label" for="text-input">Age</label>
+          <div class="col-md-9">
+            <input type="number"  name="text-input" class="form-control" [(ngModel)]="contrat.age" placeholder="Age Assuré">
+            <span style="color: red" class="help-block">{{testage}}</span>
+          </div>
+        </div>
+        <div class="form-group row">
+          <label class="col-md-3 col-form-label" for="text-input">Durée du contrat</label>
+          <div class="col-md-9">
+            <input type="number"  name="text-input" class="form-control" [(ngModel)]="contrat.n"  placeholder="Saisissez le n">
+            <span style="color: red" class="help-block">{{testn}}</span>
+          </div>
+        </div>
+        <div class="form-group row">
+          <label class="col-md-3 col-form-label" for="text-input">Nombre de payments</label>
+          <div class="col-md-9">
+            <input type="number"  name="text-input" class="form-control" [(ngModel)]="contrat.m" placeholder="Saisissez le m">
+            <span style="color: red" class="help-block">{{test}}</span>
+          </div>
+        </div>
+        <div class="form-group row">
+          <label class="col-md-3 col-form-label" for="text-input">Taux d'interet</label>
+          <div class="col-md-9">
+            <input type="number"  name="text-input" class="form-control" [(ngModel)]="contrat.i" placeholder="Saisissez le i( ex: 0.02 pour 2%)">
+            <span style="color: red" class="help-block">{{testi}}</span>
+          </div>
+        </div>
+        <div class="form-group row">
+          <label class="col-md-3 col-form-label" for="text-input">K</label>
+          <div class="col-md-9">
+            <input type="number"  name="k" [disabled]="contrat.type!=3" class="form-control" [(ngModel)]="contrat.k" placeholder="k si Combined">
+
+          </div>
+        </div>
+
+
+      </form>
+    </div>
+    <div class="card-footer">
+
+      <button type="submit" (click)="simulate()" class="btn btn-sm btn-primary"><i class="fa fa-dot-circle-o"></i> Simulate</button>
+      <button type="reset" (click)="clean()" class="btn btn-sm btn-danger"><i class="fa fa-ban"></i> Reset</button>
+    </div>
+  </div>
+
+
+  <div class="card">
+    <div class="card-header">
+      <strong>PRIME</strong>
+    </div>
+    <div class="card-body">
+      <form action="" method="post" class="form-inline">
+        <div class="form-group">
+          <label class="col-md-3 col-form-label" >Prime Unique</label>
+          <h1 style="color: blue"> {{u}}</h1>
+        </div>
+        <div class="form-group">
+          <label class="col-md-3 col-form-label">Prime Annuelle </label>
+          <h1 style="color: red"> {{p}}</h1>
+        </div>
+      </form>
+    </div>
+    <div class="card-footer">
+
+    </div>
+  </div>
+
